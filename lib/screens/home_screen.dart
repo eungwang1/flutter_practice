@@ -44,6 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
     timer = Timer.periodic(const Duration(seconds: 1), onTick);
   }
 
+  void onResetPressed() {
+    setState(() {
+      totalSecondes = twentyFiveMinutes;
+    });
+    onPausePressed();
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split(".").first.substring(2);
@@ -71,13 +78,27 @@ class _HomeScreenState extends State<HomeScreen> {
             Flexible(
               flex: 2,
               child: Center(
-                child: IconButton(
-                  onPressed: isRunning ? onPausePressed : onStartPressed,
-                  icon: Icon(isRunning
-                      ? Icons.pause_circle_filled_outlined
-                      : Icons.play_circle_outline),
-                  iconSize: 120,
-                  color: Theme.of(context).cardColor,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: isRunning ? onPausePressed : onStartPressed,
+                      icon: Icon(isRunning
+                          ? Icons.pause_circle_filled_outlined
+                          : Icons.play_circle_outline),
+                      iconSize: 120,
+                      color: Theme.of(context).cardColor,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    IconButton(
+                      onPressed: onResetPressed,
+                      icon: const Icon(Icons.restore),
+                      iconSize: 50,
+                      color: Colors.white70,
+                    ),
+                  ],
                 ),
               ),
             ),
