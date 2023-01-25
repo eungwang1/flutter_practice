@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/screens/home_screen.pomodoro.dart';
 
 void main() {
   runApp(const App());
@@ -20,6 +20,6 @@ class App extends StatelessWidget {
           ),
           cardColor: const Color(0xFFF4EDDB),
         ),
-        home: const HomeScreen());
+        home: const PomodoroHomeScreen());
   }
 }
